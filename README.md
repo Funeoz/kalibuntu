@@ -55,5 +55,5 @@ If you want to add a new tool, please refer to this page of the wiki.
 
 ## License
 
-The project is under [GPLv3 license]().
+The project is under [GPLv3 license](https://github.com/Funeoz/kalibuntu/blob/master/LICENSE).
 
