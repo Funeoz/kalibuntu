@@ -2,7 +2,7 @@
 
 # Kalibuntu
 
-Kalibuntu is a set of bash scripts to facilitatee the process of installing Kali tools on Ubuntu
+Kalibuntu is a set of bash scripts to facilitate the process of installing Kali tools on Ubuntu
 without using Kali's repositories.
 
 ## Installation
@@ -44,7 +44,7 @@ See the [wiki for supported tools]().
 
 - [ ] better log system
 
-- [ ] set up spinner to all shell scripts for cleaner run instead of echo
+- [ ] set up spinner for all shell scripts for cleaner run instead of echo
 
 ## Contributing 
 
