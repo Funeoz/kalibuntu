@@ -1,0 +1,4 @@
+# This file is used to store the current version of the tools that are downloaded from GitHub. If the version stored in here is different
+# from the new available one of the tool,  the tool will be updated and so the version.
+
+BETTERCAP_VERSION=NEW_BETTERCAP_VERSION
