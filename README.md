@@ -51,7 +51,7 @@ See the [wiki for supported tools]().
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 Please make sure to update tests as appropriate.
 
-If you want to add a new tool, please refer to this page of the wiki.
+If you want to add a new tool, please refer to [this page of the wiki]().
 
 ## License
 

@@ -14,6 +14,7 @@ kalibuntu () {
 
     echo "Removing log"
     rm kalibuntu.log
+    touch kalibuntu.log
 
     echo "export PATH=$PATH:$(pwd)" >> ~/.profile
     source ~/.profile

@@ -10,7 +10,5 @@ pip3 install --user lastversion
 } >> ../../kalibuntu.log 2>&1
 stop_spinner $?
 
-
-echo "Finished installing... Going to Kalibuntu main menu"
-sleep 2
-./kalibuntu.sh
+echo "Finished installing... You can now execute kalibuntu.sh"
+exit
