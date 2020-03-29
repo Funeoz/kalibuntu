@@ -40,7 +40,7 @@ See the [wiki for supported tools]().
 
 ## To-do
 
-- [ ] support positional parameters for faster tool management (eg: ```./kalibuntu.sh install metasploit)
+- [ ] support positional parameters for faster tool management (eg: ```./kalibuntu.sh install metasploit```)
 
 - [ ] better log system
 
