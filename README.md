@@ -17,7 +17,7 @@ Then give executable rights to all the shell scripts in the folder.
 
 ```bash
 cd kalibuntu
-find . -type f -iname ".sh" -exec chmod +x {} \;
+find . -type f -iname "*.sh" -exec chmod +x {} \;
 ```
 
 Run ```first_run.sh``` to install needed tools for Kalibuntu (as sudo):
