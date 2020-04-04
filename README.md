@@ -2,7 +2,7 @@
 
 # Kalibuntu
 
-![Imgur](https://i.imgur.com/U4jWYBg.gifv)
+![Imgur](https://i.imgur.com/U4jWYBg.gif)
 
 Kalibuntu is a set of bash scripts to facilitate the process of installing Kali tools on Ubuntu
 without using Kali's repositories to prevent system breakages.
