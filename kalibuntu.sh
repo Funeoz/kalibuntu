@@ -10,15 +10,23 @@ check_sudo () {
 
 COLUMNS=4
 kalibuntu () {
-    clear
+    source spinner.sh
 
-    echo "Removing log"
+    start_spinner 'Cleaning log'
     rm kalibuntu.log
     touch kalibuntu.log
+    sleep 2
+    stop_spinner $?
+
+
+    clear
 
     echo "export PATH=$PATH:$(pwd)" >> ~/.profile
     source ~/.profile
     . banner.sh
+
+    # create this variable to run commands in child scripts with normal user 
+    export DEFAULT_USER=$SUDO_USER
 
     # display banner
     echo " "
@@ -115,7 +123,6 @@ kalibuntu () {
         esac
     done
     return
-
 }
 
 check_sudo

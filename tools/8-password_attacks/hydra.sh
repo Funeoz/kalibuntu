@@ -1,14 +1,18 @@
 #! /usr/bin/env bash
 
 install_hydra () {
-    echo "Installing hydra..."
+    start_spinner 'Installing hydra'
     apt-get install hydra -y >> ../../kalibuntu.log 2>&1
+    stop_spinner $?
+    echo " "
+    echo "Installation finished"
     return
 }
 
 uninstall_hydra () {
-    echo "Removing hydra..."
+    start_spinner 'Removing hydra'
     apt-get purge hydra -y >> ../../kalibuntu.log 2>&1
+    stop_spinner $?
     remove_deps
     return
 }
@@ -19,9 +23,13 @@ remove_deps () {
         case $yn in 
             yes)
                 apt autoremove
+                echo " "
+                echo "Uninstallation finished"
                 break
                 ;;
             no) 
+                echo " "
+                echo "Uninstallation finished"
                 break
                 ;;
             *)
@@ -47,6 +55,7 @@ return_to_install_script-8 () {
 
 main () {
     clear
+    source ../../spinner.sh
     . banner.sh
     tput bold
     echo "Install/Uninstall/Update hydra ?"

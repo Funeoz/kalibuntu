@@ -1,25 +1,25 @@
 #! /usr/bin/env bash
 
 install_wireshark () {
-    echo "Installing arduino from official PPA..."
+    start_spinner 'Installing wireshark from official PPA'
     {
     add-apt-repository ppa:wireshark-dev/stable -y
     apt-get update
     apt-get install wireshark -y
     } >> ../../kalibuntu.log 2>&1
+    stop_spinner $?
     echo " "
     echo "Installation finished"
     return
 }
 
 uninstall_wireshark () {
-    echo "Removing Wireshark..."
-    echo " "
+    start_spinner 'Removing Wireshark'
     {
     apt-get purge wireshark -y
     add-apt-repository --remove ppa:wireshark-dev/stable -y
     } >> ../../kalibuntu.log 2>&1
-    echo " "
+    stop_spinner $?
     remove_deps
     return
 }
@@ -62,6 +62,7 @@ return_to_install_script-1 () {
 
 main () {
     clear
+    source ../../spinner.sh
     . banner.sh
     tput bold
     echo "Install/Uninstall/Update Wireshark ?"

@@ -1,31 +1,33 @@
 #! /usr/bin/env bash
 
-install_wpcan() {
-    echo "Installing dependencies and PPA for latest ubuntu-make package..."
-    echo " "
+install_arduino() {
+    start_spinner 'Installing dependencies and PPA for latest ubuntu-make package'
     {
     add-apt-repository ppa:lyzardking/ubuntu-make -y
     apt-get update
     apt-get install ubuntu-make -y
     } >> ../../kalibuntu.log 2>&1
+    stop_spinner $?
     echo " "
-    echo "Installing arduino..."
+    start_spinner 'Installing arduino'
     umake electronics arduino >> ../../kalibuntu.log 2>&1
+    stop_spinner $?
     echo " "
     echo "Installation finished"
     return
 }
 
 uninstall_arduino () {
-    echo "Uninstalling arduino..."
-    echo " "
+    start_spinner 'Uninstalling arduino'
     {
     umake -r arduino
     apt-get purge ubuntu-make -y 
     } >> ../../kalibuntu.log 2>&1
+    stop_spinner $?
     echo " "
-    echo "Removing PPA..."
+    start_spinner 'Removing PPA'
     add-apt-repository --remove -y ppa:lyzardking/ubuntu-make >> ../../kalibuntu.log 2>&1
+    stop_spinner $?
     remove_deps
     return
 }
@@ -56,10 +58,12 @@ remove_deps () {
 }
 
 update_arduino() {
+    start_spinner 'Updating Arduino'
     {
     umake -r arduino
     umake electronics arduino
     } >> ../../kalibuntu.log 2>&1
+    stop_spinner $?
     echo " "
     echo "Update finished"
     return
@@ -73,6 +77,7 @@ return_to_install_script-10 () {
 
 main () {
     clear
+    source ../../spinner.sh
     . banner.sh
     tput bold
     echo "Install/Uninstall/Update arduino ?"

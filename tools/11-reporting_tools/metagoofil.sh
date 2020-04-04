@@ -1,42 +1,46 @@
 #! /usr/bin/env bash
 
 install_metagoofil () {
+    start_spinner 'Installing metagoofil'
     {
     cd ../.. || exit
     cd binaries || exit
     git clone https://github.com/opsdisk/metagoofil.git
-    cd metagoofil || exit
-    pip3 install -r requirements.txt
-    cd ../.. || exit
+    cd .. || exit
     cd tools/11-reporting_tools || exit
+    su - "$DEFAULT_USER" -c "pip3 install -r kalibuntu/binaries/metagoofil/requirements.txt >> kalibuntu/kalibuntu.log"
+    } >> ../../kalibuntu.log 2>&1
+    stop_spinner $?
     echo " "
     echo "Installation finished"
     return
-    } >> ../../kalibuntu.log 2>&1
 }
 
 uninstall_metagoofil () {
+    start_spinner 'Uninstalling metagoofil'
     {
     cd ../.. || exit
     cd binaries || exit
     rm -rf metagoofil
     cd .. || exit
     cd tools/11-reporting_tools || exit
-    pip3 uninstall google -y
-    pip3 uninstall requests -y
+    su - "$DEFAULT_USER" -c "pip3 uninstall google requests -y >> kalibuntu/kalibuntu.log"
     } >> ../../kalibuntu.log 2>&1
+    stop_spinner $?
     echo " "
     echo "Uninstallation finished"
     return
 }
 
 update_metagoofil () {
+    start_spinner 'Updating metagoofil'
     {
     cd ../.. || exit
     cd binaries || exit
     rm -rf metagoofil
     git clone https://github.com/opsdisk/metagoofil.git
     } >> ../../kalibuntu.log 2>&1
+    stop_spinner $?
     echo " "
     echo "Upgrade finished"
     return
@@ -50,6 +54,7 @@ return_to_install_script-11 () {
 
 main () {
     clear
+    source ../../spinner.sh
     . banner.sh
     tput bold
     echo "Install/Uninstall/Update metagoofil (based on opsdisk/metagoofil) ?"

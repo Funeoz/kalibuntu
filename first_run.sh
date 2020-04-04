@@ -10,5 +10,5 @@ pip3 install --user lastversion
 } >> ../../kalibuntu.log 2>&1
 stop_spinner $?
 
-echo "Finished installing... You can now execute kalibuntu.sh"
+echo "Finished setup... You can now execute kalibuntu.sh"
 exit

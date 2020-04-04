@@ -1,9 +1,10 @@
 #! /usr/bin/env bash
 
+source ../spinner.sh
+
+start_spinner 'Updating all tools'
+
 # updating .deb-based tools first
-
-echo " Updating all tools..."
-
 {
 ./update_deb.sh
 
@@ -21,6 +22,8 @@ update_arduino
 update_metagoofil
 } >> ../../kalibuntu.log 2>&1
 
+stop_spinner $?
+echo " "
 echo "Updates finished. Returning to main menu..."
 cd .. || exit
 ./kalibuntu.sh

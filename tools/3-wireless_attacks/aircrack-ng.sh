@@ -1,8 +1,9 @@
 #! /usr/bin/env bash
 
 install_aircrack-ng () {
-    echo "Installing aircrack-ng..."
+    start_spinner 'Installing aircrack-ng'
     apt-get install aircrack-ng -y >> ../../kalibuntu.log 2>&1
+    stop_spinner $?
     echo " "
     install_airgraph-ng
     return
@@ -13,7 +14,9 @@ install_airgraph-ng () {
     select yn in yes no; do
         case $yn in 
             yes)
+                start_spinner 'Installing airgraph-ng'
                 apt-get install airgraph-ng >> ../../kalibuntu.log 2>&1
+                stop_spinner $?
                 echo " "
                 echo "Installation finished"
                 break
@@ -33,8 +36,9 @@ install_airgraph-ng () {
 }
 
 uninstall_aircrack-ng () {
-    echo "Removing aircrack-ng and airgraph-ng..."
+    start_spinner 'Removing aircrack-ng and airgraph-ng'
     apt-get purge aircrack-ng airgraph-ng -y >> ../../kalibuntu.log 2>&1
+    stop_spinner $?
     remove_deps
     return
 }
@@ -77,6 +81,7 @@ return_to_install_script-3 () {
 
 main () {
     clear
+    source ../../spinner.sh
     . banner.sh
     tput bold
     echo "Install/Uninstall/Update aircrack-ng ?"

@@ -5,22 +5,22 @@ install_nmap () {
     select yn in "Yes" "No"; do
         case $yn in
             Yes)
-                echo "Installing from Ubuntu's repositories" 
+                start_spinner 'Installing from Ubuntu repositories'
                 apt-get install zenmap nmap -y >> ../../kalibuntu.log 2>&1
+                stop_spinner $?
                 echo " "
                 echo "Installation finished"
                 break
                 ;;
             No) 
+                start_spinner 'Installing from Ubuntu repositories'
                 apt-get install nmap -y >> ../../kalibuntu.log 2>&1
+                stop_spinner $?
                 echo " "
                 echo "Installation finished"
                 break
                 ;;
             *)
-                echo " "
-                echo "Please enter a number"
-                sleep 1.5
                 clear
                 install_nmap
                 break
@@ -31,9 +31,9 @@ install_nmap () {
 }
 
 uninstall_nmap () {
-    echo "Uninstalling Nmap and Zenmap..."
-    echo " "
+    start_spinner 'Uninstalling nmap'
     apt-get purge nmap zenmap -y >> ../../kalibuntu.log 2>&1
+    stop_spinner $?
     remove_deps
     return
 }
@@ -76,6 +76,7 @@ return_to_install_script-1 () {
 
 main () {
     clear
+    source ../../spinner.sh
     . banner.sh
     tput bold
     echo "Install/Uninstall/Update Nmap ?"
