@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-p1_tools=("hydra" "back")
+p1_tools=("hydra" "hashcat" "back")
 
 return_to_menu () {
     clear
@@ -17,6 +17,11 @@ main () {
     echo " "
     select choice in ${p1_tools[*]}; do
         case $choice in
+            hashcat)
+                clear
+                ./hashcat.sh
+                break
+                ;;
             hydra) 
                 clear
                 ./hydra.sh
