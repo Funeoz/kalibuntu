@@ -1,4 +1,4 @@
-![GitHub repo size](https://img.shields.io/github/repo-size/funeoz/kalibuntu) &nbsp; ![GitHub](https://img.shields.io/github/license/funeoz/kalibuntu)
+![GitHub repo size](https://img.shields.io/github/repo-size/funeoz/kalibuntu) &nbsp; ![GitHub license](https://img.shields.io/github/license/funeoz/kalibuntu)
 
 # Kalibuntu
 
@@ -38,9 +38,9 @@ Run as root ```kalibuntu.sh```
 sudo ./kalibuntu.sh
 ```
 
-## Tools supported
+## Supported tools
 
-See the [wiki for supported tools]().
+See the [wiki for supported tools](https://github.com/Funeoz/kalibuntu/wiki/Supported-tools).
 
 ## To-do
 
