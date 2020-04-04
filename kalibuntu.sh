@@ -18,7 +18,6 @@ kalibuntu () {
     sleep 2
     stop_spinner $?
 
-
     clear
 
     echo "export PATH=$PATH:$(pwd)" >> ~/.profile

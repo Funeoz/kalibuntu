@@ -42,6 +42,11 @@ sudo ./kalibuntu.sh
 
 See the [wiki for supported tools](https://github.com/Funeoz/kalibuntu/wiki/Supported-tools).
 
+## Updating
+
+At this time, you need to `git clone` this repository manually to update it.
+An easier way for updating will be added in the future.
+
 ## To-do
 
 - [ ] support positional parameters for faster tool management (eg: ```./kalibuntu.sh install metasploit```)
