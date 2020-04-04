@@ -1,4 +1,4 @@
-![GitHub repo size](https://img.shields.io/github/repo-size/funeoz/kalibuntu) &nbsp; ![GitHub license](https://img.shields.io/github/license/funeoz/kalibuntu)
+![GitHub repo size](https://img.shields.io/github/repo-size/funeoz/kalibuntu) &nbsp; ![GitHub license](https://img.shields.io/github/license/funeoz/kalibuntu) &nbsp; ![GitHub contributors](https://img.shields.io/github/contributors/funeoz/kalibuntu?color=green)
 
 # Kalibuntu
 
