@@ -15,11 +15,13 @@ find . -type f -iname "*.sh" -exec source {} \;
 
 update_sqlmap
 update_wpscan
+update_routersploit
 update_bettercap
 update_apktool
 #update_ghidra
 update_arduino
 update_metagoofil
+
 } >> ../../kalibuntu.log 2>&1
 
 stop_spinner $?
