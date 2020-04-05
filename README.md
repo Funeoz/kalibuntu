@@ -44,7 +44,13 @@ See the [wiki for supported tools](https://github.com/Funeoz/kalibuntu/wiki/Supp
 
 ## Updating
 
-At this time, you need to `git clone` this repository manually to update it.
+To do this:
+
+```bash
+cd kalibuntu
+git pull
+```
+
 An easier way for updating will be added in the future.
 
 ## To-do
