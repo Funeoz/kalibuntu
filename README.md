@@ -42,7 +42,7 @@ sudo ./kalibuntu.sh
 
 See the [wiki for supported tools](https://github.com/Funeoz/kalibuntu/wiki/Supported-tools).
 
-At least one tool is adder per week.
+At least one tool is added per week.
 
 ## Updating
 
