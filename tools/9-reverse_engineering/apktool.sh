@@ -16,8 +16,10 @@ install_apktool () {
 
     start_spinner 'Installing apktool'
     su - "$DEFAULT_USER" -c "
-    cd kalibuntu/binaries
-    lastversion https://github.com/iBotPeaches/Apktool --assets --download --filter apktool >> ../kalibuntu.log 2>&1"
+    cd kalibuntu/binaries && \
+    mkdir apktool && \
+    cd apktool && \
+    lastversion https://github.com/iBotPeaches/Apktool --assets --download --filter apktool >> ../../kalibuntu.log 2>&1"
     stop_spinner $?
     echo " "
     echo "Installation finished"
