@@ -1,83 +1,76 @@
 #! /usr/bin/env bash
 
-# install_ghidra () {
-#     echo "Installing dependencies..."
-#     apt-get update
-#     apt-get install openjdk-11-jdk
-#     apt-get install openjdk-11-jre-headless
-#     echo " "
-#     echo "Installing ghidra"
-#     cd ../.. || exit
-#     cd binaries/ || exit
-#     GHIDRA_VERSION="GHIDRA_VERSION=$(lastversion https://github.com/NationalSecurityAgency/ghidra 2>&1)"
-#     echo "$GHIDRA_VERSION" >> ../tools_version.txt
-#     lastversion https://github.com/NationalSecurityAgency/ghidra --assets --download
-#     tar xvzf .tar.gz
-    
-#     clear
-#     echo "Installation finished"
-#     echo "ghidra can be found in $(pwd)"
-#     sleep 3
-#     cd ../.. || exit
-#     cd tools/9-reverse_engineering || exit
+install_ghidra () {
+    start_spinner 'Installing dependencies'
+    apt-get install openjdk-11-jdk openjdk-11-jre-headless -y >> ../../kalibuntu.log 2>&1
+    stop_spinner $?
+    echo " "
+    start_spinner 'Installing ghidra (this can take some time because downloaded from the internet)'
+    cd ../.. || exit
+    cd binaries/ || exit
+    wget https://ghidra-sre.org/ghidra_9.1.2_PUBLIC_20200212.zip
+    unzip ghidra_9.1.2_PUBLIC_20200212.zip
+    cd ghidra_9.1.2_PUBLIC || exit
+    chmod +x ghidraRun
+    stop_spinner $?
+    echo " "
+    echo "Running ghidraRun in kalibuntu/binaries/ghidra_9.1.2_PUBLIC"
+    sleep 3
+    ./ghidraRun
+    cd ../.. || exit
+    cd tools/9-reverse_engineering || exit
+    return
+}
 
-#     return
-# }
+uninstall_ghidra () {
+    start_spinner 'Uninstalling dependencies'
+    apt-get purge openjdk-11-jdk openjdk-11-jre-headless -y >> ../../kalibuntu.log 2>&1
+    cd ../.. || exit
+    cd binaries || exit
+    rm -rf ghidra_9.1.2_PUBLIC
+    stop_spinner $?
+    echo " "
+    echo "Uninstallation finished"
+    return
+}
 
-# uninstall_ghidra () {
-#     pip3 uninstall ghidra
-#     echo " "
-#     echo "Uninstallation finished"
-#     return
-# }
 
-# update_ghidra () {
-#     pip3 install --upgrade ghidra
-#     echo " "
-#     echo "Upgrade finished"
-#     return
-# }
+return_to_install_script-9 () {
+    clear
+    ./install_script-9.sh
+    return
+}
 
-# return_to_install_script-2 () {
-#     clear
-#     ./install_script-2.sh
-#     return
-# }
+main () {
+    clear
+    . banner.sh
+    tput bold
+    echo "Install/Uninstall ghidra ?"
+    tput sgr0
+    echo " "
 
-# main () {
-#     clear
-#     . banner.sh
-#     tput bold
-#     echo "Install/Uninstall/Update ghidra ?"
-#     tput sgr0
-#     echo " "
+    select choice in Install Uninstall Update back; do
+        case $choice in 
+        Install)
+            install_ghidra
+            break
+            ;;
+        Uninstall)
+            uninstall_ghidra
+            break
+            ;;
+        back)
+            return_to_install_script-9
+            break
+            ;;
+        *)
+            clear
+            main
+            break
+            ;;
+        esac
+    done
+    return
+}
 
-#     select choice in Install Uninstall Update back; do
-#         case $choice in 
-#         Install)
-#             install_ghidra
-#             break
-#             ;;
-#         Uninstall)
-#             uninstall_ghidra
-#             break
-#             ;;
-#         Update)
-#             update_ghidra
-#             break
-#             ;;
-#         back)
-#             return_to_install_script-2
-#             break
-#             ;;
-#         *)
-#             clear
-#             main
-#             break
-#             ;;
-#         esac
-#     done
-#     return
-# }
-
-# main
+main

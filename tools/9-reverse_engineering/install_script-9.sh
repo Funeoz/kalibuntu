@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-p1_tools=("apktool" "back")
+p1_tools=("apktool" "ghidra" "back")
 
 return_to_menu () {
     clear
@@ -17,14 +17,14 @@ main () {
     echo " "
     select choice in ${p1_tools[*]}; do
         case $choice in
-            # ghidra) 
-            #     clear
-            #     ./ghidra.sh
-            #     break
-            #     ;;
             apktool)
                 clear
                 ./apktool.sh
+                break
+                ;;
+            ghidra) 
+                clear
+                ./ghidra.sh
                 break
                 ;;
             back) 
