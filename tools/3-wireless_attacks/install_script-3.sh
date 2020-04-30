@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-p1_tools=("aircrack-ng" "back")
+p1_tools=("aircrack-ng" "pixiewps" "back")
 
 return_to_menu () {
     clear
@@ -20,6 +20,11 @@ main () {
             aircrack-ng) 
                 clear
                 ./aircrack-ng.sh
+                break
+                ;;
+            pixiewps)
+                clear
+                ./pixiewps.sh
                 break
                 ;;
             back) 
